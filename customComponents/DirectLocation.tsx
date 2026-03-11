@@ -25,6 +25,8 @@ export default function DirectLocation({ data }: DirectLocationProps) {
     setSocials(data)
   }, [data, setSocials])
 
+  console.log(socials)
+
   return (
     <>
       <div className="bg-primaryOrange px-4 py-2 md:px-10">

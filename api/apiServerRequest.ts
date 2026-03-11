@@ -38,9 +38,6 @@ export async function apiRequest({
       ? "?" + new URLSearchParams(params as Record<string, string>).toString()
       : ""
 
-    console.log(`${BASE_URL}${endpoint}${queryString}`)
-    console.log(method)
-
     const res = await fetch(`${BASE_URL}${endpoint}${queryString}`, {
       method,
       headers,
