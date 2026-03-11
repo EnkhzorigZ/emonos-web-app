@@ -1,17 +1,21 @@
-import { Geist, Geist_Mono, Public_Sans } from "next/font/google"
-
+import { Geist_Mono, Inter } from "next/font/google"
 import "./globals.css"
+
 import { ThemeProvider } from "@/components/theme-provider"
-import { cn } from "@/lib/utils"
 import { TooltipProvider } from "@/components/ui/tooltip"
 import { Toaster } from "@/components/ui/sonner"
+
 import Navbar from "@/customComponents/Navbar"
 import Footer from "@/customComponents/Footer"
 import { SocialsProvider } from "@/context/SocialsProvider"
-import Head from "next/head"
+
+import { cn } from "@/lib/utils"
 import { Metadata } from "next"
 
-const publicSans = Public_Sans({ subsets: ["latin"], variable: "--font-sans" })
+const inter = Inter({
+  subsets: ["latin", "cyrillic"], // supports Mongolian
+  variable: "--font-sans",
+})
 
 const fontMono = Geist_Mono({
   subsets: ["latin"],
@@ -25,34 +29,34 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode
-}>) {
+}) {
   return (
-    <html
-      lang="en"
-      suppressHydrationWarning
-      className={cn(
-        "antialiased",
-        fontMono.variable,
-        "font-sans",
-        publicSans.variable
-      )}
-    >
-      <body>
+    <html lang="mn" suppressHydrationWarning>
+      <body
+        className={cn(
+          "font-sans antialiased",
+          inter.variable,
+          fontMono.variable
+        )}
+      >
         <TooltipProvider>
           <SocialsProvider>
             <ThemeProvider>
-              <div className="">
+              <div>
                 <Navbar />
+
                 <main className="container-max min-h-screen py-4">
                   {children}
                 </main>
+
                 <Footer />
               </div>
             </ThemeProvider>
           </SocialsProvider>
         </TooltipProvider>
+
         <Toaster />
       </body>
     </html>

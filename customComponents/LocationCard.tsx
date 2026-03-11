@@ -20,7 +20,7 @@ export default function LocationCard() {
   return (
     <>
       <Card
-        className="cursor-pointer rounded-full border-2 border-orangeBorder p-1 py-0"
+        className="cursor-pointer rounded-full border-2 border-orangeBorder p-1 py-0.5"
         onClick={() => {
           setOpenModal(true)
         }}
