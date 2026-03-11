@@ -4,6 +4,9 @@ import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { cn } from "@/lib/utils"
 import { TooltipProvider } from "@/components/ui/tooltip"
+import { Toaster } from "@/components/ui/sonner"
+import Navbar from "@/customComponents/Navbar"
+import Footer from "@/customComponents/Footer"
 
 const publicSans = Public_Sans({ subsets: ["latin"], variable: "--font-sans" })
 
@@ -30,8 +33,17 @@ export default function RootLayout({
     >
       <body>
         <TooltipProvider>
-          <ThemeProvider>{children}</ThemeProvider>
+          <ThemeProvider>
+            <div className="">
+              <Navbar />
+              <main className="container-max min-h-screen py-4">
+                {children}
+              </main>
+              <Footer />
+            </div>
+          </ThemeProvider>
         </TooltipProvider>
+        <Toaster />
       </body>
     </html>
   )

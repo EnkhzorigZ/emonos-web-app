@@ -1,5 +1,5 @@
-"use client"
+import HomeScreen from "@/screens/HomeScreen"
 
-export default function Home() {
-  return <p>hello</p>
+export default function HomePage() {
+  return <HomeScreen />
 }
