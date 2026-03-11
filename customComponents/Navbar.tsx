@@ -1,6 +1,7 @@
 import { apiRequest } from "@/api/apiServerRequest"
 import DirectLocation from "./DirectLocation"
 import NavbarComponent from "./NavbarComponent"
+import { Suspense } from "react"
 
 async function fetchSocials() {
   const res = await apiRequest({
@@ -16,7 +17,9 @@ export default async function Navbar() {
 
   return (
     <>
-      <DirectLocation data={socials?.data} />
+      <Suspense fallback={<div>...</div>}>
+        <DirectLocation data={socials?.data} />
+      </Suspense>
       <NavbarComponent />
     </>
   )

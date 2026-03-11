@@ -1,20 +1,11 @@
 "use client"
 
-import { ChevronDown, MapPin, Phone } from "lucide-react"
+import { Phone } from "lucide-react"
 import { usePathname } from "next/navigation"
 import LinkCard from "./LinkCard"
-import { Card, CardContent } from "@/components/ui/card"
-import { useState } from "react"
-import {
-  Dialog,
-  DialogBody,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog"
 import LocationCard from "./LocationCard"
+import { useEffect } from "react"
+import { useSocials } from "@/context/SocialsProvider"
 
 interface DirectLocationProps {
   data: {
@@ -27,6 +18,12 @@ export default function DirectLocation({ data }: DirectLocationProps) {
   const pathname = usePathname()
 
   if (pathname !== "/") return null
+
+  const { socials, setSocials } = useSocials()
+
+  useEffect(() => {
+    setSocials(data)
+  }, [data, setSocials])
 
   return (
     <>
