@@ -6,6 +6,7 @@
 
 @theme {
   --color-primaryOrange: #fd572f;
+  --color-orangeBorder: #ffa07a;
 }
 
 :root {
@@ -133,4 +134,7 @@
 
 .container-max {
   @apply mx-auto flex flex-col px-2 md:max-w-7xl;
+}
+
+.iconClass {
 }
