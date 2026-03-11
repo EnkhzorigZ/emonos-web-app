@@ -62,6 +62,6 @@ export function Small({ text }: { text: string }) {
   return <small className="text-sm leading-none font-medium">{text}</small>
 }
 
-export function TypographyMuted({ text }: { text: string }) {
+export function Muted({ text }: { text: string }) {
   return <p className="text-sm text-muted-foreground">{text}</p>
 }
