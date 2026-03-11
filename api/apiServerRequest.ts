@@ -13,7 +13,7 @@ type ApiOptions = {
 
 export async function apiRequest({
   endpoint,
-  method = "GET",
+  method,
   body,
   params,
   useToken = false,
@@ -37,6 +37,9 @@ export async function apiRequest({
     const queryString = params
       ? "?" + new URLSearchParams(params as Record<string, string>).toString()
       : ""
+
+    console.log(`${BASE_URL}${endpoint}${queryString}`)
+    console.log(method)
 
     const res = await fetch(`${BASE_URL}${endpoint}${queryString}`, {
       method,

@@ -1,17 +1,23 @@
+import { apiRequest } from "@/api/apiServerRequest"
 import DirectLocation from "./DirectLocation"
+import NavbarComponent from "./NavbarComponent"
 
-export default function Navbar() {
+async function fetchSocials() {
+  const res = await apiRequest({
+    endpoint: "/api/site/social",
+    method: "POST",
+    body: null,
+  })
+  return res
+}
+
+export default async function Navbar() {
+  const socials = await fetchSocials()
+
   return (
     <>
-      <DirectLocation />
-
-      <div className="sticky top-0 z-50 bg-white dark:bg-background">
-        <div className="border-b">
-          <div className="space-y-4 py-4">
-            <div className="container-max">Navbar</div>
-          </div>
-        </div>
-      </div>
+      <DirectLocation data={socials?.data} />
+      <NavbarComponent />
     </>
   )
 }
