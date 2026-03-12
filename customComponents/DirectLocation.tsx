@@ -31,7 +31,7 @@ export default function DirectLocation({ data }: DirectLocationProps) {
         <div className="flex items-center justify-between">
           <LocationCard />
           <div className="flex items-center gap-4">
-            <div className="flex items-center gap-2 text-white">
+            <div className="hidden items-center gap-2 text-white [@media(min-width:374px)]:flex">
               <div>
                 <Phone color="white" size={18} />
               </div>

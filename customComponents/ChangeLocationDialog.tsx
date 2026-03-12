@@ -81,6 +81,8 @@ export default function ChangeLocationDialog({
         case "Баян-Өлгий":
           router.push("https://ulgii.emonos.mn/login")
           break
+        default:
+          router.push("https://emonos.mn/login")
       }
     }
 
@@ -100,17 +102,23 @@ export default function ChangeLocationDialog({
           <RadioGroup
             value={region}
             onValueChange={(value) => setRegion(value)}
-            className="flex gap-6"
+            className="flex gap-4"
           >
-            <div className="flex items-center space-x-2">
+            <label
+              htmlFor="ub"
+              className={`flex w-full cursor-pointer items-center justify-between gap-4 rounded-lg border p-3 hover:bg-muted ${region === "Улаанбаатар" ? "border-primary bg-muted/50" : "border-border"} `}
+            >
               <RadioGroupItem value="Улаанбаатар" id="ub" />
-              <Label htmlFor="ub">Улаанбаатар</Label>
-            </div>
+              <span>Улаанбаатар</span>
+            </label>
 
-            <div className="flex items-center space-x-2">
+            <label
+              htmlFor="province"
+              className={`flex w-full cursor-pointer items-center justify-between gap-4 rounded-lg border p-3 hover:bg-muted ${region === "Орон нутаг" ? "border-primary bg-muted/50" : "border-border"} `}
+            >
               <RadioGroupItem value="Орон нутаг" id="province" />
-              <Label htmlFor="province">Орон нутаг</Label>
-            </div>
+              <span>Орон нутаг</span>
+            </label>
           </RadioGroup>
 
           {/* Province Select */}
