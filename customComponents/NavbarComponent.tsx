@@ -23,8 +23,8 @@ export default function NavbarComponent() {
 
   return (
     <div className="sticky top-0 z-50 bg-white dark:bg-background">
-      <div className="border-b">
-        <div className="space-y-4 py-4">
+      <div className="border-b border-primary">
+        <div className="space-y-4 py-2">
           <div className="container-max">
             <div className="flex w-full items-center justify-between gap-4 lg:gap-20">
               <Image
@@ -66,16 +66,16 @@ export default function NavbarComponent() {
               </div>
 
               <div className="flex items-center gap-2 md:gap-2">
-                <Button variant={"outline"} size={"icon"}>
+                <Button variant={"outline"}>
                   <Heart color="gray" size={18} />
                 </Button>
-                <Button variant={"outline"} size={"icon"}>
+                <Button variant={"outline"}>
                   <ShoppingCart color="gray" size={18} />
                 </Button>
-                <Button variant={"outline"} size={"icon"}>
+                <Button variant={"outline"}>
                   <User color="gray" size={18} />
                 </Button>
-                <Button className="h-8">Нэвтрэх</Button>
+                <Button className="">Нэвтрэх</Button>
               </div>
             </div>
           </div>
