@@ -4,7 +4,7 @@ import { Phone } from "lucide-react"
 import { usePathname } from "next/navigation"
 import LinkCard from "./LinkCard"
 import LocationCard from "./LocationCard"
-import { useEffect } from "react"
+import { Suspense, useEffect } from "react"
 import { useSiteData } from "@/context/SiteDataProviders"
 
 export default function DirectLocation() {

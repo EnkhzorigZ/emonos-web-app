@@ -41,7 +41,7 @@ export default function RootLayout({
         <TooltipProvider>
           <SiteDataProvider>
             <ThemeProvider>
-              <div>
+              <>
                 <Navbar />
 
                 <main className="container-max min-h-screen py-4">
@@ -49,7 +49,7 @@ export default function RootLayout({
                 </main>
 
                 <Footer />
-              </div>
+              </>
             </ThemeProvider>
           </SiteDataProvider>
         </TooltipProvider>
