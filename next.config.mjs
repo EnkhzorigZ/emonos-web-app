@@ -1,5 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  cacheComponents: true,
+
   reactStrictMode: false,
   devIndicators: false,
   output: "standalone", // Required for Docker optimization
