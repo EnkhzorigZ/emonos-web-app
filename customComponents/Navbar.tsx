@@ -1,30 +1,75 @@
 import { apiRequest } from "@/api/apiServerRequest"
-import DirectLocation from "./DirectLocation"
-import NavbarComponent from "./NavbarComponent"
-import { Suspense } from "react"
-import { cacheLife } from "next/cache"
+import SiteDataLoader from "./SiteDataLoader"
 
-async function fetchSocials() {
-  "use cache"
-  cacheLife({ stale: 300 })
+async function fetchSiteData() {
+  try {
+    // Run all requests in parallel
+    const [
+      socialsRes,
+      headerlogosRes,
+      loginbgRes,
+      catbannersRes,
+      cartSuggestRes,
+      headerbgRes,
+      searchbgRes,
+      commentbgRes,
+      basketadRes,
+      trackorderbgRes,
+    ] = await Promise.all([
+      apiRequest({ endpoint: "/api/site/social", method: "POST" }),
+      apiRequest({ endpoint: "/api/site/logo", method: "POST" }),
+      apiRequest({ endpoint: "/api/site/v2/banner/login", method: "POST" }),
+      apiRequest({
+        endpoint: "/api/site/v2/specialcontents",
+        method: "POST",
+        body: { keyword: "cat_topbrands" },
+      }),
+      apiRequest({
+        endpoint: "/api/site/v2/specialcontents",
+        method: "POST",
+        body: { keyword: "cart_suggest" },
+      }),
+      apiRequest({
+        endpoint: "/api/site/v2/banner/headerback",
+        method: "POST",
+      }),
+      apiRequest({ endpoint: "/api/site/v2/banner/searchbg", method: "POST" }),
+      apiRequest({ endpoint: "/api/site/v2/banner/prodfaq", method: "POST" }),
+      apiRequest({
+        endpoint: "/api/site/v2/banner/checkoutads",
+        method: "POST",
+      }),
+      apiRequest({
+        endpoint: "/api/site/v2/banner/trackorder",
+        method: "POST",
+      }),
+    ])
 
-  const res = await apiRequest({
-    endpoint: "/api/site/social",
-    method: "POST",
-    body: null,
-  })
-  return res
+    // Prepare cart_suggest safely
+    const cart_suggest = cartSuggestRes?.success
+      ? cartSuggestRes?.data?.products || []
+      : []
+
+    return {
+      socials: socialsRes?.data,
+      headerlogos: headerlogosRes?.data,
+      loginbg: loginbgRes?.data,
+      catbanners: catbannersRes?.data,
+      cart_suggest,
+      headerbg: headerbgRes?.data,
+      searchbg: searchbgRes?.data,
+      commentbg: commentbgRes?.data,
+      basketad: basketadRes?.data,
+      trackorderbg: trackorderbgRes?.data,
+    }
+  } catch (error) {
+    console.error("Error fetching site data:", error)
+    return {}
+  }
 }
 
 export default async function Navbar() {
-  const socials = await fetchSocials()
+  const siteData = await fetchSiteData()
 
-  return (
-    <>
-      <Suspense fallback={<div>...</div>}>
-        <DirectLocation data={socials?.data} />
-      </Suspense>
-      <NavbarComponent />
-    </>
-  )
+  return <SiteDataLoader siteData={siteData} />
 }

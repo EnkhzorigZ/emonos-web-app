@@ -1,16 +1,13 @@
 import { Geist_Mono, Inter } from "next/font/google"
 import "./globals.css"
-
 import { ThemeProvider } from "@/components/theme-provider"
 import { TooltipProvider } from "@/components/ui/tooltip"
 import { Toaster } from "@/components/ui/sonner"
-
 import Navbar from "@/customComponents/Navbar"
 import Footer from "@/customComponents/Footer"
-import { SocialsProvider } from "@/context/SocialsProvider"
-
 import { cn } from "@/lib/utils"
 import { Metadata } from "next"
+import { SiteDataProvider } from "@/context/SiteDataProviders"
 
 const inter = Inter({
   subsets: ["latin", "cyrillic"], // supports Mongolian
@@ -42,7 +39,7 @@ export default function RootLayout({
         )}
       >
         <TooltipProvider>
-          <SocialsProvider>
+          <SiteDataProvider>
             <ThemeProvider>
               <div>
                 <Navbar />
@@ -54,7 +51,7 @@ export default function RootLayout({
                 <Footer />
               </div>
             </ThemeProvider>
-          </SocialsProvider>
+          </SiteDataProvider>
         </TooltipProvider>
 
         <Toaster />

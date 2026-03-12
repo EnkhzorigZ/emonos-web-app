@@ -1,3 +1,5 @@
+"use client"
+
 import { Button } from "@/components/ui/button"
 import {
   InputGroup,
@@ -7,7 +9,7 @@ import {
 import { Heart, InfoIcon, Menu, ShoppingCart, User } from "lucide-react"
 import Image from "next/image"
 
-export default async function NavbarComponent() {
+export default function NavbarComponent() {
   return (
     <div className="sticky top-0 z-50 bg-white dark:bg-background">
       <div className="border-b">
@@ -17,7 +19,7 @@ export default async function NavbarComponent() {
               <Image
                 src="/logo.png"
                 alt="Description"
-                objectFit="contain"
+                style={{ objectFit: "contain" }}
                 width={130}
                 height={40}
                 priority

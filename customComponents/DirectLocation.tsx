@@ -5,25 +5,14 @@ import { usePathname } from "next/navigation"
 import LinkCard from "./LinkCard"
 import LocationCard from "./LocationCard"
 import { useEffect } from "react"
-import { useSocials } from "@/context/SocialsProvider"
+import { useSiteData } from "@/context/SiteDataProviders"
 
-interface DirectLocationProps {
-  data: {
-    name: string
-    link: string
-  }[]
-}
-
-export default function DirectLocation({ data }: DirectLocationProps) {
+export default function DirectLocation() {
   const pathname = usePathname()
 
   if (pathname !== "/") return null
 
-  const { setSocials } = useSocials()
-
-  useEffect(() => {
-    setSocials(data)
-  }, [data, setSocials])
+  const { siteData } = useSiteData()
 
   return (
     <>
@@ -39,7 +28,7 @@ export default function DirectLocation({ data }: DirectLocationProps) {
             </div>
 
             <div className="flex items-center gap-2">
-              {data?.map((item, index) => (
+              {siteData?.socials?.map((item, index) => (
                 <LinkCard key={index} item={item} />
               ))}
             </div>
