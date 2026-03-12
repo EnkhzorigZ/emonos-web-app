@@ -55,7 +55,7 @@ export default function IndexLayoutBuilder({ layouts }: Props) {
     if (layout.title_type === "text") {
       return (
         <h2
-          className="mb-6 cursor-pointer text-xl font-semibold"
+          className="mb-6 cursor-pointer text-center text-xl font-semibold"
           onClick={() => layout.title_url && router.push(layout.title_url)}
         >
           {layout.title}

@@ -19,6 +19,9 @@ export default function Layout1({ data }: { data: any }) {
           width={600}
           height={300}
           unoptimized
+          onClick={() => {
+            actionHandler(item, router)
+          }}
           priority
           className="w-full transform cursor-pointer rounded-lg object-cover transition duration-500 hover:scale-102"
           key={index}

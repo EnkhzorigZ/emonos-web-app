@@ -10,17 +10,17 @@ import {
 } from "react"
 
 interface SiteData {
-  socials?: any[] | null
+  socials?: any
   headerlogos?: any
   loginbg?: any
   catbanners?: any
-  cart_suggest?: any[]
+  cart_suggest?: any
   headerbg?: any
   searchbg?: any
   commentbg?: any
   basketad?: any
   trackorderbg?: any
-  categories?: any[]
+  categories?: any
 }
 
 interface SiteDataContextProps {

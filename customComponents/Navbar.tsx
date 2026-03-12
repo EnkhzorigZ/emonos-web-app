@@ -5,6 +5,8 @@ async function fetchSiteData() {
   try {
     // Run all requests in parallel
     const [
+      homeRes,
+      bannerRes,
       categoriesRes,
       socialsRes,
       headerlogosRes,
@@ -17,6 +19,12 @@ async function fetchSiteData() {
       basketadRes,
       trackorderbgRes,
     ] = await Promise.all([
+      apiRequest({
+        endpoint: "/api/site/v2/layout",
+        method: "POST",
+        body: { page_type: "home" },
+      }),
+      apiRequest({ endpoint: "/api/site/v2/banner/home", method: "POST" }),
       apiRequest({ endpoint: "/api/product/category", method: "POST" }),
       apiRequest({ endpoint: "/api/site/social", method: "POST" }),
       apiRequest({ endpoint: "/api/site/logo", method: "POST" }),
@@ -53,6 +61,8 @@ async function fetchSiteData() {
       : []
 
     return {
+      homeLayout: homeRes?.data,
+      banners: bannerRes?.data,
       categories: categoriesRes,
       socials: socialsRes?.data,
       headerlogos: headerlogosRes?.data,
