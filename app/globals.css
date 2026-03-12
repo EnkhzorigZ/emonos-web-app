@@ -137,6 +137,10 @@
   @apply mx-auto flex flex-col px-2 md:max-w-7xl;
 }
 
+.containers {
+  @apply mx-auto flex flex-col md:max-w-7xl;
+}
+
 .mini-container {
   @apply hidden px-4 py-2 md:px-10 lg:block;
 }

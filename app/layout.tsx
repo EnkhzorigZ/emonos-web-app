@@ -46,9 +46,7 @@ export default function RootLayout({
                 <>
                   <Navbar />
 
-                  <main className="container-max min-h-screen py-4">
-                    {children}
-                  </main>
+                  <main className="containers min-h-screen">{children}</main>
 
                   <Footer />
                 </>
