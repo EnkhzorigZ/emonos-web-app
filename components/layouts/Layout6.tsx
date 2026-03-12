@@ -1,11 +1,11 @@
 import Image from "next/image"
 import { useRouter } from "next/navigation"
-import { getContentData } from "@/helper/GetContentData"
+import { get_content_data } from "@/helper/GetContentData"
 import { actionHandler } from "@/helper/ActionHelper"
 
 export default function Layout6({ contents }: any) {
   const router = useRouter()
-  const data = getContentData(contents)
+  const data = get_content_data(contents, "")
 
   return (
     <div className="grid grid-cols-2 gap-6 md:grid-cols-4 lg:grid-cols-6">

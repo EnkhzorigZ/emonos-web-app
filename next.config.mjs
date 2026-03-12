@@ -16,6 +16,9 @@ const nextConfig = {
       },
     ],
   },
+  env: {
+    MEDIA_URL: process.env.API_MEDIA_URL,
+  },
 }
 
 export default nextConfig

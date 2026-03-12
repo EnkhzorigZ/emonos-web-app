@@ -1,32 +1,36 @@
-export function getContentData(data?: any[], key?: string) {
-  if (!data?.length) return []
+export const get_content_data = (data: any, key: any) => {
+  if (data?.length > 0) {
+    const contents = data[0]
+    if (key == "top_banner") {
+      return contents && contents?.top_banner?.length > 0
+        ? contents?.top_banner
+        : []
+    }
 
-  const contents = data[0]
+    const type = contents?.content_type
+    switch (type) {
+      case "banner":
+        return contents?.banner
 
-  if (key === "top_banner") {
-    return contents?.top_banner ?? []
-  }
+      case "product":
+        return contents?.products
 
-  switch (contents?.content_type) {
-    case "banner":
-      return contents?.banner ?? []
+      case "category":
+        return contents?.categories
 
-    case "product":
-      return contents?.products ?? []
+      case "brand":
+        return contents?.brands
 
-    case "category":
-      return contents?.categories ?? []
+      case "prnews":
+        return contents?.prnews
 
-    case "brand":
-      return contents?.brands ?? []
+      case "blog":
+        return contents?.blogposts
 
-    case "prnews":
-      return contents?.prnews ?? []
-
-    case "blog":
-      return contents?.blogposts ?? []
-
-    default:
-      return contents?.banner ?? []
+      default:
+        return contents?.banner
+    }
+  } else {
+    return []
   }
 }

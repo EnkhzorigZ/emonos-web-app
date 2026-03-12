@@ -138,14 +138,14 @@ export default function IndexLayoutBuilder({ layouts }: Props) {
   }
 
   return (
-    <div className="space-y-12">
+    <div className="space-y-4 px-2">
       {layouts
         .sort((a, b) => a.ordering_value - b.ordering_value)
         .map((section, index) => {
           const detail = section.layout_detail
 
           return (
-            <section key={index} className="container mx-auto px-4">
+            <section key={index} className="">
               {renderTitle(detail)}
               {renderLayout(detail)}
             </section>

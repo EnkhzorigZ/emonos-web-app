@@ -2,31 +2,28 @@
 
 import Image from "next/image"
 import { useRouter } from "next/navigation"
-import { getContentData } from "@/helper/GetContentData"
+import { get_content_data } from "@/helper/GetContentData"
+import { actionHandler } from "@/helper/ActionHelper"
 
 export default function Layout1({ data }: { data: any }) {
   const router = useRouter()
-  const items = getContentData(data)
+  const items = get_content_data(data?.contents, "")
 
   return (
-    <div className="w-full">
-      <div className="grid gap-4">
-        {items?.map((item: any, index: number) => (
-          <div
-            key={index}
-            // onClick={() => actionHandler(item, router)}
-            className="relative w-full cursor-pointer overflow-hidden rounded-xl"
-          >
-            <Image
-              src={`${process.env.NEXT_PUBLIC_API_MEDIA_URL}${item?.photo}`}
-              alt={item?.title || "banner"}
-              width={1200}
-              height={400}
-              className="h-auto w-full object-cover transition-transform duration-300 hover:scale-105"
-            />
-          </div>
-        ))}
-      </div>
+    <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+      {items?.map((item: any, index: number) => (
+        <Image
+          src={`${process.env.MEDIA_URL}${item?.photo}`}
+          alt={item?.title || "banner"}
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          width={600}
+          height={300}
+          unoptimized
+          priority
+          className="w-full transform cursor-pointer rounded-lg object-cover transition duration-500 hover:scale-102"
+          key={index}
+        />
+      ))}
     </div>
   )
 }
