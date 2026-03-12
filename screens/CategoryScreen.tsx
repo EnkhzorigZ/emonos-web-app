@@ -1,5 +1,9 @@
-import React from "react"
+"use client"
+
+import { parseAsInteger, useQueryState } from "nuqs"
 
 export default function CategoryScreen() {
-  return <div>CategoryScreen</div>
+  const [categoryId, setCategoryId] = useQueryState("id")
+
+  return <div>{categoryId}</div>
 }
