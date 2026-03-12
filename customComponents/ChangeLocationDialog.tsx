@@ -104,21 +104,21 @@ export default function ChangeLocationDialog({
             onValueChange={(value) => setRegion(value)}
             className="flex gap-4"
           >
-            <label
+            <Label
               htmlFor="ub"
               className={`flex w-full cursor-pointer items-center justify-between gap-4 rounded-lg border p-3 hover:bg-muted ${region === "Улаанбаатар" ? "border-primary bg-muted/50" : "border-border"} `}
             >
               <RadioGroupItem value="Улаанбаатар" id="ub" />
               <span>Улаанбаатар</span>
-            </label>
+            </Label>
 
-            <label
+            <Label
               htmlFor="province"
               className={`flex w-full cursor-pointer items-center justify-between gap-4 rounded-lg border p-3 hover:bg-muted ${region === "Орон нутаг" ? "border-primary bg-muted/50" : "border-border"} `}
             >
               <RadioGroupItem value="Орон нутаг" id="province" />
               <span>Орон нутаг</span>
-            </label>
+            </Label>
           </RadioGroup>
 
           {/* Province Select */}

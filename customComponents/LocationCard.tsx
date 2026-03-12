@@ -20,7 +20,7 @@ export default function LocationCard() {
   return (
     <>
       <Card
-        className="cursor-pointer rounded-full border-2 border-orangeBorder p-1 py-0.5"
+        className="cursor-pointer rounded-full border-2 border-orangeBorder bg-orangeOpacityBg p-1 py-0.5"
         onClick={() => {
           setOpenModal(true)
         }}
@@ -31,12 +31,10 @@ export default function LocationCard() {
           </div>
           <div className="hidden space-y-1 md:block">
             <p className="text-xs text-muted-foreground">Бүс сонгох</p>
-            <div className="font-bold text-black dark:text-white">
-              Улаанбаатар
-            </div>
+            <div className="font-bold text-black">Улаанбаатар</div>
           </div>
           <div className="hidden md:block">
-            <ChevronDown size={18} className="stroke-black dark:stroke-white" />
+            <ChevronDown size={18} className="stroke-black dark:stroke-black" />
           </div>
         </CardContent>
       </Card>
