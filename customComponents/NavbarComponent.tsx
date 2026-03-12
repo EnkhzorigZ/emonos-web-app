@@ -133,7 +133,7 @@ export default function NavbarComponent() {
       </div>
 
       {/* CATEGORY MODAL */}
-      <CategorySheet open={categoryModal} onOpenChange={setCategoryModal} />
+      <CategorySheet open={categoryModal} setOpen={setCategoryModal} />
     </>
   )
 }
