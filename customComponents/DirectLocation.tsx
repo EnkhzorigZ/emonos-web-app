@@ -19,13 +19,11 @@ export default function DirectLocation({ data }: DirectLocationProps) {
 
   if (pathname !== "/") return null
 
-  const { socials, setSocials } = useSocials()
+  const { setSocials } = useSocials()
 
   useEffect(() => {
     setSocials(data)
   }, [data, setSocials])
-
-  console.log(socials)
 
   return (
     <>
