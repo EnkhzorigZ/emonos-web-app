@@ -20,6 +20,7 @@ interface SiteData {
   commentbg?: any
   basketad?: any
   trackorderbg?: any
+  categories?: any[]
 }
 
 interface SiteDataContextProps {

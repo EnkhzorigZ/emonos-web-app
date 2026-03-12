@@ -5,6 +5,7 @@ async function fetchSiteData() {
   try {
     // Run all requests in parallel
     const [
+      categoriesRes,
       socialsRes,
       headerlogosRes,
       loginbgRes,
@@ -16,6 +17,7 @@ async function fetchSiteData() {
       basketadRes,
       trackorderbgRes,
     ] = await Promise.all([
+      apiRequest({ endpoint: "/api/product/category", method: "POST" }),
       apiRequest({ endpoint: "/api/site/social", method: "POST" }),
       apiRequest({ endpoint: "/api/site/logo", method: "POST" }),
       apiRequest({ endpoint: "/api/site/v2/banner/login", method: "POST" }),
@@ -51,6 +53,7 @@ async function fetchSiteData() {
       : []
 
     return {
+      categories: categoriesRes,
       socials: socialsRes?.data,
       headerlogos: headerlogosRes?.data,
       loginbg: loginbgRes?.data,

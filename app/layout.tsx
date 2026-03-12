@@ -8,6 +8,7 @@ import Footer from "@/customComponents/Footer"
 import { cn } from "@/lib/utils"
 import { Metadata } from "next"
 import { SiteDataProvider } from "@/context/SiteDataProviders"
+import { NuqsAdapter } from "nuqs/adapters/next/app"
 
 const inter = Inter({
   subsets: ["latin", "cyrillic"], // supports Mongolian
@@ -38,21 +39,23 @@ export default function RootLayout({
           fontMono.variable
         )}
       >
-        <TooltipProvider>
-          <SiteDataProvider>
-            <ThemeProvider>
-              <>
-                <Navbar />
+        <NuqsAdapter>
+          <TooltipProvider>
+            <SiteDataProvider>
+              <ThemeProvider>
+                <>
+                  <Navbar />
 
-                <main className="container-max min-h-screen py-4">
-                  {children}
-                </main>
+                  <main className="container-max min-h-screen py-4">
+                    {children}
+                  </main>
 
-                <Footer />
-              </>
-            </ThemeProvider>
-          </SiteDataProvider>
-        </TooltipProvider>
+                  <Footer />
+                </>
+              </ThemeProvider>
+            </SiteDataProvider>
+          </TooltipProvider>
+        </NuqsAdapter>
 
         <Toaster />
       </body>
